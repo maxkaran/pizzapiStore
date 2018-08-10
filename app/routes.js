@@ -5,7 +5,7 @@ var router = express.Router();
 
 module.exports = function(app){
     app.get('/', function(req, res){
-        res.send('Hello World');
+        res.render('index');
         console.log('Index page req');
     })
 
@@ -14,8 +14,8 @@ module.exports = function(app){
         console.log('test page req');
     })
 
-    app.get('/ejs_page', function(req, res){
-        res.render('test.ejs');
-        console.log('ejs page req');
+    app.get('/menu', function(req, res){
+        res.render('menu.ejs');
+        console.log('Menu page req');
     })
 }
