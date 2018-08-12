@@ -4,10 +4,13 @@
   },
   "name": "pizzapistore",
   "dependencies": {
+    "dominos": "^2.1.1",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "path": "^0.12.7",
-    "pizzapi": "0.0.8"
+    "pizzapi": "0.0.8",
+    "request": "^2.88.0",
+    "xml2json": "^0.11.2"
   },
   "description": "An online store where you can order dominoes pizza, thanks to their API",
   "version": "1.0.0",
