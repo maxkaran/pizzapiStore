@@ -24,6 +24,15 @@
     </div>
 
     <div>
+            <ul>
+                <% for(var key in friendlyMenu) {%>
+                    
+                <li><%= JSON.stringify(Object.keys(friendlyMenu[key])) %></li>
+                    
+                <% } %>
+                   
+            </ul>
+
         <a href="/checkout" class="btn btn-default"><span class="fas fa-shopping-cart"></span> Checkout</a>
     </div>
 
