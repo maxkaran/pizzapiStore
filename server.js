@@ -1,8 +1,11 @@
 //Declare dependencies
 var express = require('express');
 var path = require('path');
-
+var parser = require('body-parser');
 var app = express();
+
+app.use(parser.urlencoded({extended : true}));
+app.use(parser.json());
 
 var port = 3000;
 

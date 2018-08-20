@@ -17,7 +17,7 @@
     <div class="jumbotron text-center">
         <h1></span></span>Find a Restaurant!</h1>
 
-        <form action="find-restaurant" method="post">
+        <form action="" method="POST">
             <label for="street_number" >Street Number</label><input id="street_number" type="text" name="street_number_field">
             <br>
             <label for="street_name">Street Name</label><input id="street_name" type="text" name="street_name_field">
@@ -29,11 +29,13 @@
             <label for="postal_code">Postal Code</label><input id="postal_code" type="text" name="postal_code_field">
             <br>
 
-            <input type="submit" value="Let's Go!"
+            <input type="submit" value="Let's Go!">
         </form>
 
         <br>
-
+        <% if(closestStore) { %>
+        <h1>StoreID: <%= closestStore %> </h1>
+        <% } %>
         <a href="/menu" class="btn btn-default"><span class="fas fa-utensils"></span> FOOD!</a>
     </div>
 

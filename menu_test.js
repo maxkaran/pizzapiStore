@@ -19,20 +19,43 @@ dominos.Util.findNearbyStores(
                 //console.log(menu);
                 var keysObj = Object.keys(storeData.menuByCode)
                 for(var key in keysObj){
-                    console.log(keysObj[key]);
+                    //console.log(keysObj[key]);
                     if(menu[keysObj[key]].menuData.Price){
-                        console.log(menu[keysObj[key]].menuData.Price)                    
+                        //console.log(menu[keysObj[key]].menuData.Price)                    
                         priceMenuCount++;
                     }
                 }
                 console.log("Menu items with a price: ", priceMenuCount);
 
+                myStore.getFriendlyNames(
+                    function(result){
+                        console.log(result);
+                    }
+                );
             }
         );
     }
 );
 
-var order = new dominos.Order();
+var Max = new dominos.Customer(
+    {
+        firstName: 'Max',
+        lastName: 'Karan',
+        address: '399 Barrie St, Kingston, ON, k7k3t8',
+        email: 'barack@whitehouse.gov'
+    }
+);
+
+var order = new dominos.Order(
+    {
+        customer: Max,
+
+        //optional set the store ID right away
+        storeID: 10310,
+
+        deliveryMethod: 'Delivery' //(or 'Carryout')
+    }
+);
 
 order.addItem({
     code: 'F_HOTDCUP',
@@ -42,5 +65,5 @@ order.addItem({
 
 order.price(      
     function(result) {
-        console.log("Price: ", result);
+        //console.log("Price: ", result.result.Order);
 })
