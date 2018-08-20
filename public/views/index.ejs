@@ -8,18 +8,26 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <!-- load fontawesome -->
-    <style>
-        body {
-            padding-top: 80px;
-        }
 
-    </style>
+    <link href="/css/default.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="container">
 
     <div class="jumbotron text-center">
-        <h1></span></span>Take a look at the menu</h1>
+        <h1></span></span>Find a Restaurant!</h1>
+
+        <form action="find-restaurant" method="post">
+            <label for="street_number" >Street Number</label><input id="street_number" type="text" name="street_number_field">
+            <br>
+            <label for="street_name">Street Name </label><input id="street_name" type="text" name="street_name_field">
+            <br>
+
+            <input type="submit" value="Let's Go!"
+        </form>
+
+        <br>
+
         <a href="/menu" class="btn btn-default"><span class="fas fa-utensils"></span> FOOD!</a>
     </div>
 

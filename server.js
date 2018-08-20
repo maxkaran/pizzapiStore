@@ -10,6 +10,8 @@ app.set('view engine', 'ejs'); // set up ejs for templating
 app.set('views', path.join(__dirname, './public/views')); //set up path to page views
 app.engine('html', require('ejs').renderFile);
 
+app.use(express.static(path.join(__dirname, 'public'))); //for css links default root is now public file
+
 //Set up routes
 require('./app/routes')(app);
 
