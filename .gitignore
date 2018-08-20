@@ -1,3 +1,6 @@
+#vscode debug prefs directory
+.vscode
+
 # Logs
 logs
 *.log
