@@ -31,8 +31,8 @@
         </form>
 
         <br>
-        <% if(closestStore && closestStore.StoreID) { %>
-        <h3>Store # <%= closestStore.StoreID %> located at <%= closestStore.AddressDescription %> </h3>
+        <% if(closestStoreJSON) { %>
+        <h3>Store # <%= closestStoreJSON.StoreID %> located at <%= closestStoreJSON.AddressDescription %> </h3>
         <br>
         <a href="/menu" class="btn btn-default"><span class="fas fa-utensils"></span> FOOD!</a>
         <% } %>

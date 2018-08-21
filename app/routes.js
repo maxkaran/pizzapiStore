@@ -22,7 +22,7 @@ closestStore.getFriendlyNames(
 */
 module.exports = function(app){
     app.get('/', function(req, res){ //index or home page
-        res.render('index', {closestStore : closestStore});
+        res.render('index', {closestStore : closestStore, closestStoreJSON : closestStoreJSON});
         console.log('Index page req');
     })
 
@@ -30,11 +30,12 @@ module.exports = function(app){
         closestStore.getFriendlyNames(
             function(menu){
                 friendlyMenu = menu.result;
+                console.log(menu);
+
+                res.render('menu.ejs', {friendlyMenu : friendlyMenu});
+                console.log('Menu page req');
             }
         )
-        
-        res.render('menu.ejs', {friendlyMenu : friendlyMenu});
-        console.log('Menu page req');
     })
 
     app.get('/checkout', function(req, res){ //link to checkout page, which will allow people to alter their cart of orders
@@ -67,7 +68,7 @@ module.exports = function(app){
                     closestStore.ID = closestStoreJSON.StoreID;
                     console.log(closestStore);
 
-                    res.render('index', {closestStore : closestStore, deliveryAddress : addressString });
+                    res.render('index', {closestStore : closestStore, deliveryAddress : addressString, closestStoreJSON : closestStoreJSON});
                 }
             );        
     });
