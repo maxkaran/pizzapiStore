@@ -25,8 +25,11 @@
     <!--jquery is needed for toaster to work-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
-            function addMenuItem() {
-                toastr.success("successfully added menu item");
+            function addMenuItem(clicked_id) {
+                var button = document.getElementById(clicked_id);
+                var code = button.getAttribute('data-id');
+                
+                toastr.success("successfully added " + clicked_id);
             }
     </script>
 <div class="container">
@@ -45,7 +48,7 @@
                     <td><%= menuItem.Name %></td>
                     <td><%= menuItem.Price %></td>
                     <td><%= menuItem.Description %></td>
-                    <td><button onclick="addMenuItem()">Add</button></td>
+                    <td><button id="<%= menuItem.Name %>" onclick="addMenuItem(this.id)" data-id="<%= menuItem.Code%>">Add</button></td>
                 </tr>
 
                 <% } %>
