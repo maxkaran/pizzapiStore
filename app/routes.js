@@ -8,8 +8,10 @@ var app = express();
 app.use(parser.urlencoded({extended : true}));
 app.use(parser.json());
 
-var closestStore;
+var closestStoreJSON;
+var closestStore = new dominos.Store({ID : 0});
 var friendlyMenu;
+
 /*
 closestStore.getFriendlyNames(
      function(storeData){
@@ -25,6 +27,12 @@ module.exports = function(app){
     })
 
     app.get('/menu', function(req, res){ //link to menu page, will parse menu through API to see what is available
+        closestStore.getFriendlyNames(
+            function(menu){
+                friendlyMenu = menu.result;
+            }
+        )
+        
         res.render('menu.ejs', {friendlyMenu : friendlyMenu});
         console.log('Menu page req');
     })
@@ -36,9 +44,10 @@ module.exports = function(app){
 
     app.post('/', function(req, res){
         var addressString = "";
+        var storeID;
 
-        if(req.body.street_number_field && req.body.street_name_field)
-            addressString += req.body.street_number_field+ " " +req.body.street_name_field;
+        if(req.body.street_field)
+            addressString += req.body.street_field;
 
         if(req.body.city_name_field)
             addressString += ", "+req.body.city_name_field;
@@ -53,11 +62,13 @@ module.exports = function(app){
                 addressString,
                 'Delivery',
                 function(restaurant){
-                    console.log(restaurant);
-                }
-            );
+                    closestStoreJSON = restaurant.result.Stores[0]; //JSON of the closest store
+                    console.log(closestStoreJSON.StoreID);
+                    closestStore.ID = closestStoreJSON.StoreID;
+                    console.log(closestStore);
 
-        console.log(addressString);
-        res.render('index', {closestStore : addressString});
+                    res.render('index', {closestStore : closestStore, deliveryAddress : addressString });
+                }
+            );        
     });
 }

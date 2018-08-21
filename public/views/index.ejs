@@ -18,9 +18,7 @@
         <h1></span></span>Find a Restaurant!</h1>
 
         <form action="" method="POST">
-            <label for="street_number" >Street Number</label><input id="street_number" type="text" name="street_number_field">
-            <br>
-            <label for="street_name">Street Name</label><input id="street_name" type="text" name="street_name_field">
+            <label for="street" >Street</label><input id="street" type="text" name="street_field">
             <br>
             <label for="city_name">City</label><input id="city_name" type="text" name="city_name_field">
             <br>
@@ -33,10 +31,12 @@
         </form>
 
         <br>
-        <% if(closestStore) { %>
-        <h1>Input Address: <%= closestStore %> </h1>
-        <% } %>
+        <% if(closestStore && closestStore.StoreID) { %>
+        <h3>Store # <%= closestStore.StoreID %> located at <%= closestStore.AddressDescription %> </h3>
+        <br>
         <a href="/menu" class="btn btn-default"><span class="fas fa-utensils"></span> FOOD!</a>
+        <% } %>
+        
     </div>
 
 </div>
