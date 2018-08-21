@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <!-- load fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- load toastr -->
 
     <link href="/css/default.css" rel="stylesheet" type="text/css">
 
@@ -19,6 +21,14 @@
     </style>
 </head>
 <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--jquery is needed for toaster to work-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+            function addMenuItem() {
+                toastr.success("successfully added menu item");
+            }
+    </script>
 <div class="container">
 
     <div class="jumbotron text-center">
@@ -27,12 +37,15 @@
 
     <div>
             <table>
-                <th>Name</th><th>Price</th><th>Description</th>
+                <th>Name</th><th>Price</th><th>Description</th><th></th>
                 <% var keysObj = Object.keys(menu) %>
                 <% for(var key in keysObj) {%>
                     <% var menuItem = menu[keysObj[key]].menuData %>                    
                 <tr>
-                    <td><%= menuItem.Name %></td><td><%= menuItem.Price %></td><td><%= menuItem.Description %></td>
+                    <td><%= menuItem.Name %></td>
+                    <td><%= menuItem.Price %></td>
+                    <td><%= menuItem.Description %></td>
+                    <td><button onclick="addMenuItem()">Add</button></td>
                 </tr>
 
                 <% } %>
