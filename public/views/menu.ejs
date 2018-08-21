@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <!-- load fontawesome -->
 
+    <link href="/css/default.css" rel="stylesheet" type="text/css">
+
     <style>
         body {
             padding-top: 80px;
@@ -24,14 +26,18 @@
     </div>
 
     <div>
-            <ul>
-                <% for(var key in friendlyMenu) {%>
-                    
-                <li><%= Object.keys(friendlyMenu[key]) %></li>
-                    
+            <table>
+                <th>Name</th><th>Price</th><th>Description</th>
+                <% var keysObj = Object.keys(menu) %>
+                <% for(var key in keysObj) {%>
+                    <% var menuItem = menu[keysObj[key]].menuData %>                    
+                <tr>
+                    <td><%= menuItem.Name %></td><td><%= menuItem.Price %></td><td><%= menuItem.Description %></td>
+                </tr>
+
                 <% } %>
                    
-            </ul>
+            </table>
 
         <a href="/checkout" class="btn btn-default"><span class="fas fa-shopping-cart"></span> Checkout</a>
     </div>

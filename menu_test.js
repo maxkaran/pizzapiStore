@@ -9,7 +9,7 @@ dominos.Util.findNearbyStores(
     '399 Barrie St, Kingston, Ontario, k7k3t8',
     'Delivery',
     function(storeData){
-        console.log(storeData.result.Stores[0]);
+        //console.log(storeData.result.Stores[0]);
         myStore.ID = storeData.result.Stores[0].StoreID;
 
         myStore.getMenu(
@@ -19,7 +19,7 @@ dominos.Util.findNearbyStores(
                 //console.log(menu);
                 var keysObj = Object.keys(storeData.menuByCode)
                 for(var key in keysObj){
-                    //console.log(keysObj[key]);
+                    console.log(keysObj[key]);
                     if(menu[keysObj[key]].menuData.Price){
                         //console.log(menu[keysObj[key]].menuData.Price)                    
                         priceMenuCount++;
@@ -29,7 +29,7 @@ dominos.Util.findNearbyStores(
 
                 myStore.getFriendlyNames(
                     function(result){
-                        console.log(result);
+                        //console.log(result);
                     }
                 );
             }

@@ -10,16 +10,8 @@ app.use(parser.json());
 
 var closestStoreJSON;
 var closestStore = new dominos.Store({ID : 0});
-var friendlyMenu;
+var menu;
 
-/*
-closestStore.getFriendlyNames(
-     function(storeData){
-        friendlyMenu = storeData.result;
-        //console.log(friendlyMenu);
-     }
- );
-*/
 module.exports = function(app){
     app.get('/', function(req, res){ //index or home page
         res.render('index', {closestStore : closestStore, closestStoreJSON : closestStoreJSON});
@@ -27,12 +19,12 @@ module.exports = function(app){
     })
 
     app.get('/menu', function(req, res){ //link to menu page, will parse menu through API to see what is available
-        closestStore.getFriendlyNames(
-            function(menu){
-                friendlyMenu = menu.result;
+        closestStore.getMenu(
+            function(menuResult){
+                menu = menuResult.menuByCode;
                 console.log(menu);
 
-                res.render('menu.ejs', {friendlyMenu : friendlyMenu});
+                res.render('menu.ejs', {menu : menu});
                 console.log('Menu page req');
             }
         )
