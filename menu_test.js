@@ -6,7 +6,7 @@ var myStore = new dominos.Store({ID: 0});
 //myStore.ID = 10310;
 
 dominos.Util.findNearbyStores(
-    '399 Barrie St, Kingston, ON, k7k3t8',
+    '399 Barrie St, Kingston, Ontario, k7k3t8',
     'Delivery',
     function(storeData){
         //console.log(storeData.result.Stores);

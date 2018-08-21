@@ -35,7 +35,28 @@ module.exports = function(app){
     })
 
     app.post('/', function(req, res){
-        var addressString =  req.body.street_number_field
+        var addressString = "";
+
+        if(req.body.street_number_field && req.body.street_name_field)
+            addressString += req.body.street_number_field+ " " +req.body.street_name_field;
+
+        if(req.body.city_name_field)
+            addressString += ", "+req.body.city_name_field;
+
+        if(req.body.province_name_field)
+            addressString += ", "+req.body.province_name_field;
+
+        if(req.body.postal_code_field)
+            addressString += ", "+req.body.postal_code_field;
+
+            dominos.Util.findNearbyStores(
+                addressString,
+                'Delivery',
+                function(restaurant){
+                    console.log(restaurant);
+                }
+            );
+
         console.log(addressString);
         res.render('index', {closestStore : addressString});
     });
