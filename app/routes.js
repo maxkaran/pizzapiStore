@@ -1,6 +1,6 @@
 var parser = require('body-parser'); //this is to parse inputs through the form
 var express = require('express');
-var dominos = require('dominos');
+var pizzapi = require('pizzapi');
 
 var app = express();
 //var router = express.Router();
@@ -9,7 +9,7 @@ app.use(parser.urlencoded({extended : true}));
 app.use(parser.json());
 
 var closestStoreJSON;
-var closestStore = new dominos.Store({ID : 0});
+var closestStore = new pizzapi.Store({ID : 0});
 var menu;
 
 module.exports = function(app){
@@ -19,9 +19,9 @@ module.exports = function(app){
     })
 
     app.get('/menu', function(req, res){ //link to menu page, will parse menu through API to see what is available
-        closestStore.getMenu(
+        closestStore.getFriendlyNames(
             function(menuResult){
-                menu = menuResult.menuByCode;
+                menu = menuResult.result;
                 console.log(menu);
 
                 res.render('menu.ejs', {menu : menu});
@@ -51,12 +51,12 @@ module.exports = function(app){
         if(req.body.postal_code_field)
             addressString += ", "+req.body.postal_code_field;
 
-            dominos.Util.findNearbyStores(
+            pizzapi.Util.findNearbyStores(
                 addressString,
                 'Delivery',
                 function(restaurant){
                     closestStoreJSON = restaurant.result.Stores[0]; //JSON of the closest store
-                    console.log(closestStoreJSON.StoreID);
+                    console.log(closestStoreJSON);
                     closestStore.ID = closestStoreJSON.StoreID;
                     console.log(closestStore);
 

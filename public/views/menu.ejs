@@ -41,9 +41,11 @@
     <div>
             <table>
                 <th>Name</th><th>Price</th><th>Description</th><th></th>
-                <% var keysObj = Object.keys(menu) %>
-                <% for(var key in keysObj) {%>
-                    <% var menuItem = menu[keysObj[key]].menuData %>                    
+                
+                <% for(var key in menu) {%>
+                    <% var menuItemKey = Object.keys(menu[key]) %>
+                    <% var menuItem = menu[key][menuItemKey] %>                    
+                    
                 <tr>
                     <td><%= menuItem.Name %></td>
                     <td><%= menuItem.Price %></td>

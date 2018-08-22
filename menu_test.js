@@ -1,22 +1,22 @@
 //This file is soley for me to play with the API and learn it's functionality, has no purpose in terms of the website
 
-var dominos = require('dominos'); 
+var dominos = require('pizzapi'); 
 var myStore = new dominos.Store({ID: 0});
 
-//myStore.ID = 10310;
+myStore.ID = 10310;
 
 dominos.Util.findNearbyStores(
     '399 Barrie St, Kingston, Ontario, k7k3t8',
     'Delivery',
     function(storeData){
         //console.log(storeData.result.Stores[0]);
-        myStore.ID = storeData.result.Stores[0].StoreID;
+        //myStore.ID = storeData.result.Stores[0].StoreID;
 
         myStore.getMenu(
             function(storeData){
                 var menu = storeData.menuByCode;
                 var priceMenuCount = 0;
-                //console.log(menu);
+                console.log(storeData);
                 var keysObj = Object.keys(storeData.menuByCode)
                 for(var key in keysObj){
                     console.log(keysObj[key]);
@@ -37,7 +37,7 @@ dominos.Util.findNearbyStores(
     }
 );
 
-var Max = new dominos.Customer(
+/*var Max = new dominos.Customer(
     {
         firstName: 'Max',
         lastName: 'Karan',
@@ -66,4 +66,4 @@ order.addItem({
 order.price(      
     function(result) {
         //console.log("Price: ", result.result.Order);
-})
+})*/
