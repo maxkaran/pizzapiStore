@@ -49,7 +49,7 @@
                 <tr>
                     <td><%= menuItem.Name %></td>
                     <td><%= menuItem.Price %></td>
-                    <td><%= menuItem.Description %></td>
+                    <td><%= descriptionMenu[menuItem.ProductCode].Description %></td>
                     <td><button id="<%= menuItem.Name %>" onclick="addMenuItem(this.id)" data-id="<%= menuItem.Code%>">Add</button></td>
                 </tr>
 

@@ -24,8 +24,13 @@ module.exports = function(app){
                 menu = menuResult.result;
                 console.log(menu);
 
-                res.render('menu.ejs', {menu : menu});
-                console.log('Menu page req');
+                closestStore.getMenu(
+                    function(descriptMenu){
+                        console.log(descriptMenu.result.Products)
+                        res.render('menu.ejs', {menu : menu, descriptionMenu : descriptMenu.result.Products});
+                        console.log('Menu page req');
+                    }
+                )
             }
         )
     })

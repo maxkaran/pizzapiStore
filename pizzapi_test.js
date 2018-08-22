@@ -7,17 +7,19 @@ var store = new pizzapi.Store({ID:10310});
 
 //store.ID = 10310;
 
-/*
+
 store.getFriendlyNames(
     function(result){
-        for(var key in result.result)
-            console.log(Object.keys(result.result[key]));
+        store.getMenu(
+            function(returned){
+                //console.log(returned.result.Products);
+                var menu = returned.result.Products;
+                for(var key in result.result){
+                    console.log(menu[result.result[key][Object.keys(result.result[key])].ProductCode].Description);          
+                }
+            }
+        )
+        
     }
 );
-*/
 
-store.getMenu(
-    function(result){
-        console.log(result);
-    }
-)
