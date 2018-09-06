@@ -5,8 +5,6 @@
   "name": "pizzapistore",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "colors": "^1.3.1",
-    "dominos": "^2.1.1",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "path": "^0.12.7",

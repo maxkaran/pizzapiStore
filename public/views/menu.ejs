@@ -25,9 +25,14 @@
     <!--jquery is needed for toaster to work-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
+        var orderArray = [];
             function addMenuItem(clicked_id) {
                 var button = document.getElementById(clicked_id);
                 var code = button.getAttribute('data-id');
+                
+                orderArray.push(code);
+
+                console.log(orderArray);
                 
                 toastr.success("successfully added " + clicked_id);
             }
@@ -56,10 +61,8 @@
                 <% } %>
                    
             </table>
-
-        <a href="/checkout" class="btn btn-default"><span class="fas fa-shopping-cart"></span> Checkout</a>
     </div>
-
 </div>
+<a href="/checkout" style="position:fixed;top:20px;left:40px" class="btn btn-default"><span class="fas fa-shopping-cart"></span> Checkout</a>
 </body>
 </html>

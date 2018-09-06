@@ -3,7 +3,7 @@ This is a nodeJS website that uses pizzapi to order dominos pizza!
 
 ### If you don't have Node
 If you don't have node on your machine, first thing you should do is get the latest version here: https://nodejs.org/.
-Install it and make sure not to choose not to install the Node Package Manager (npm)
+Install it and make sure not to include the Node Package Manager (npm)
 
 ### Set up the site
 Now that you have Node on you computer, you can download this repo on to your computer.

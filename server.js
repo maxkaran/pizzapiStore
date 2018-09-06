@@ -7,7 +7,7 @@ var app = express();
 app.use(parser.urlencoded({extended : true}));
 app.use(parser.json());
 
-var port = 3000;
+var port = process.env.port || 3000;
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 app.set('views', path.join(__dirname, './public/views')); //set up path to page views

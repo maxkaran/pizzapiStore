@@ -14,7 +14,11 @@ var menu;
 
 module.exports = function(app){
     app.get('/', function(req, res){ //index or home page
-        res.render('index', {closestStore : closestStore, closestStoreJSON : closestStoreJSON});
+        res.render('index', {
+            closestStore : closestStore, 
+            closestStoreJSON : closestStoreJSON
+        });
+
         console.log('Index page req');
     })
 
@@ -22,12 +26,16 @@ module.exports = function(app){
         closestStore.getFriendlyNames(
             function(menuResult){
                 menu = menuResult.result;
-                console.log(menu);
+                //console.log(menu);
 
                 closestStore.getMenu(
                     function(descriptMenu){
-                        console.log(descriptMenu.result.Products)
-                        res.render('menu.ejs', {menu : menu, descriptionMenu : descriptMenu.result.Products});
+                        //console.log(descriptMenu.result.Products)
+                        res.render('menu.ejs', {
+                            menu : menu, 
+                            descriptionMenu : descriptMenu.result.Products,
+                        });
+
                         console.log('Menu page req');
                     }
                 )
