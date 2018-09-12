@@ -24,6 +24,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--jquery is needed for toaster to work-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="../../node_modules/jquery.cookie/jquery.cookie.js"></script>
+    <!-- This is a jquery plugin for using cookies -->
     <script>
         var orderArray = [];
             function addMenuItem(clicked_id) {
@@ -35,6 +37,12 @@
                 console.log(orderArray);
                 
                 toastr.success("successfully added " + clicked_id);
+            }
+
+            function cookifyOrder(order){ //order is the JS array of order codes
+                var orderString = JSON.stringify(order);
+                $.cookie("order", orderString); //set cookie with JQuery
+                console.log(alert($.cookie("order")));
             }
     </script>
 <div class="container">
@@ -63,6 +71,6 @@
             </table>
     </div>
 </div>
-<a href="/checkout" style="position:fixed;top:20px;left:40px" class="btn btn-default"><span class="fas fa-shopping-cart"></span> Checkout</a>
+<a onclick="cookifyOrder(orderArray)"  style="position:fixed;top:20px;left:40px" class="btn btn-default"><span class="fas fa-shopping-cart"></span> Checkout</a>
 </body>
 </html>
