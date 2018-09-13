@@ -26,7 +26,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <!-- This is a jquery plugin for using cookies -->
+    <!-- This is a plugin for using cookies -->
     <script>
         var orderArray = [];
             function addMenuItem(clicked_id) {
@@ -72,6 +72,6 @@
             </table>
     </div>
 </div>
-<a onclick="cookifyOrder(orderArray)"  style="position:fixed;top:20px;left:40px" class="btn btn-default"><span class="fas fa-shopping-cart"></span> Checkout</a>
+<a onclick="cookifyOrder(orderArray)" href="/checkout" style="position:fixed;top:20px;left:40px" class="btn btn-default"><span class="fas fa-shopping-cart"></span> Checkout</a>
 </body>
 </html>
