@@ -24,7 +24,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--jquery is needed for toaster to work-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="../../node_modules/jquery.cookie/jquery.cookie.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <!-- This is a jquery plugin for using cookies -->
     <script>
         var orderArray = [];
@@ -41,8 +42,8 @@
 
             function cookifyOrder(order){ //order is the JS array of order codes
                 var orderString = JSON.stringify(order);
-                $.cookie("order", orderString); //set cookie with JQuery
-                console.log(alert($.cookie("order")));
+                Cookies.set("order", orderString); //set cookie with JQuery
+                console.log(Cookies.get("order"));
             }
     </script>
 <div class="container">
