@@ -21,7 +21,13 @@
     <body>
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
-        <h1><span id="myText">Banana</span></h1>
-        <script> document.getElementById("myText").innerHTML = Cookies.get("order"); </script>
+        <script> 
+            var orderArray = JSON.parse(Cookies.get("order")); 
+            var orderTable = "<table><th>Item</th><th>Price</th>";
+            for(order in orderArray){
+                orderTable += "<td>";
+            }
+            orderTable += "</table>";
+        </script>
     </body>
 </html>

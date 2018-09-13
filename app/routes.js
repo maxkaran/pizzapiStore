@@ -44,7 +44,10 @@ module.exports = function(app){
     })
 
     app.get('/checkout', function(req, res){ //link to checkout page, which will allow people to alter their cart of orders
-        res.render('checkout.ejs');
+        res.render('checkout.ejs', {
+            menu : menu, 
+            descriptionMenu : descriptMenu.result.Products,
+        });
         console.log('Checkout page req');
     })
 
