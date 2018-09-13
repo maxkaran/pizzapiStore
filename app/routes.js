@@ -1,6 +1,7 @@
 var parser = require('body-parser'); //this is to parse inputs through the form
 var express = require('express');
 var pizzapi = require('pizzapi');
+var Cookies = require('js-cookie');
 
 var app = express();
 //var router = express.Router();
@@ -10,7 +11,7 @@ app.use(parser.json());
 
 var closestStoreJSON;
 var closestStore = new pizzapi.Store({ID : 0});
-var menu;
+var menu, descriptionMenu;
 
 module.exports = function(app){
     app.get('/', function(req, res){ //index or home page
@@ -30,6 +31,7 @@ module.exports = function(app){
 
                 closestStore.getMenu(
                     function(descriptMenu){
+                        descriptionMenu = descriptMenu;
                         //console.log(descriptMenu.result.Products)
                         res.render('menu.ejs', {
                             menu : menu, 
@@ -44,9 +46,11 @@ module.exports = function(app){
     })
 
     app.get('/checkout', function(req, res){ //link to checkout page, which will allow people to alter their cart of orders
+        
+        
         res.render('checkout.ejs', {
             menu : menu, 
-            descriptionMenu : descriptMenu.result.Products,
+            descriptionMenu : descriptionMenu.result.Products,
         });
         console.log('Checkout page req');
     })

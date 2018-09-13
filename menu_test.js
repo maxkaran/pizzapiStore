@@ -16,20 +16,13 @@ dominos.Util.findNearbyStores(
             function(storeData){
                 var menu = storeData.menuByCode;
                 var priceMenuCount = 0;
-                console.log(storeData);
-                var keysObj = Object.keys(storeData.menuByCode)
-                for(var key in keysObj){
-                    console.log(keysObj[key]);
-                    if(menu[keysObj[key]].menuData.Price){
-                        //console.log(menu[keysObj[key]].menuData.Price)                    
-                        priceMenuCount++;
-                    }
-                }
-                console.log("Menu items with a price: ", priceMenuCount);
+                //console.log(storeData);
+
+                //console.log("Menu items with a price: ", priceMenuCount);
 
                 myStore.getFriendlyNames(
                     function(result){
-                        //console.log(result);
+                        console.log(result.result[0]);
                     }
                 );
             }
